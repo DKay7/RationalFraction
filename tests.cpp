@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "rational.h"
 #include <iostream>
+#include <stdexcept>
 
 TEST(RationalFracTest, Construt) {
     RationalFrac frac;
@@ -12,6 +13,16 @@ TEST(RationalFracTest, Construt) {
 
     EXPECT_EQ(frac1.get_numerator(), -1);
     EXPECT_EQ(frac1.get_denominator(), 2);
+}
+
+TEST(RationalFracTest, ConstrutExcpThrow) {
+    try {
+        RationalFrac frac{1, 0};
+        EXPECT_TRUE(false);
+    }
+    catch(const std::overflow_error& err) {
+        EXPECT_EQ(err.what(), std::string("Zero division error"));
+    }
 }
 
 TEST(RationalFracTest, Simplification) {
