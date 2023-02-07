@@ -27,6 +27,16 @@ TEST(RationalFracTest, Simplification) {
 
 }
 
+TEST(RationalFracTest, Assigment) {
+    RationalFrac frac{1, 2};
+
+    auto frac1 = frac;
+
+    EXPECT_EQ(frac1.get_numerator(), 1);
+    EXPECT_EQ(frac1.get_denominator(), 2);
+
+}
+
 TEST(RationalFracTest, InputOutput) {
     std::stringstream stream;
     RationalFrac frac;
